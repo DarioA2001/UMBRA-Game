@@ -115,7 +115,7 @@ body {
 #cursor {
     display: inline;
     color: #963c34;
-    animation: blink 0.8s infinite;
+    animation: blink 1s infinite;
 }
 
 @keyframes blink {
