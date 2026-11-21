@@ -34,9 +34,10 @@ body {
 .container {
     width: 100%;
     max-width: 850px;
-    height: 620px;
+    min-height: 620px;
+    height: auto;
     display: grid;
-    grid-template-rows: minmax(0, 1.45fr) minmax(0, 1fr) 112px;
+    grid-template-rows: minmax(300px, auto) auto auto;
     gap: 12px;
     margin: 0 auto;
 }
@@ -44,7 +45,7 @@ body {
 .top-area {
     position: relative;
     min-width: 0;
-    min-height: 0;
+    min-height: 300px;
     overflow: hidden;
     background: #211f1b;
     border: 8px solid #49443b;
@@ -94,28 +95,92 @@ body {
 }
 
 .middle-area {
+    width: 100%;
     min-width: 0;
-    min-height: 0;
-    overflow: hidden;
-    position: relative;
-    padding: 20px 24px;
+    min-height: 180px;
+    height: auto;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
     background: #211f1b;
     border: 8px solid #49443b;
     box-shadow: 0 4px 15px #000;
-    font-size: 17px;
-    line-height: 1.4;
 }
 
 #story-text {
-    white-space: pre-line;
-    overflow-wrap: anywhere;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     margin: 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.dialogue-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #c4bdae;
+    font-family: 'IM Fell English', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.dialogue-entry {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+.dialogue-entry.narrator {
+    color: #aaa18f;
+    font-style: italic;
+}
+
+.dialogue-entry.mara {
+    color: #d0c2a8;
+}
+
+.dialogue-entry.thought {
+    color: #968b7b;
+    font-style: italic;
+}
+
+.dialogue-entry.elise {
+    color: #d8b9a0;
+}
+
+.dialogue-entry.unknown {
+    color: #c77d70;
+}
+
+.dialogue-name {
+    display: block;
+    margin-bottom: 2px;
+    font-family: 'Special Elite', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #a99b83;
+}
+
+.dialogue-content {
+    display: block;
+    min-height: 1em;
+    overflow-wrap: anywhere;
 }
 
 #cursor {
     display: inline;
     color: #963c34;
-    animation: blink 1s infinite;
+    animation: blink 0.8s infinite;
 }
 
 @keyframes blink {
@@ -126,7 +191,7 @@ body {
 
 .bottom-area {
     min-width: 0;
-    min-height: 0;
+    min-height: 112px;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: repeat(2, minmax(0, 1fr));
@@ -134,17 +199,18 @@ body {
 }
 
 .bottom-box {
-    min-width: 0;
-    min-height: 0;
-    padding: 10px;
-    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    outline: none;
+    text-align: center;
     background: #211f1b;
-    box-shadow: inset 0 0 0 8px #49443b;
     color: #c4bdae;
+    border: none;
+    box-shadow: inset 0 0 0 8px #49443b;
     font-family: 'IM Fell English', Georgia, serif;
     font-size: 17px;
-    cursor: pointer;
-    transition: background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+    letter-spacing: 1px;
 }
 
 .bottom-box:hover:not(:disabled) {
@@ -155,6 +221,12 @@ body {
 
 .bottom-box:active:not(:disabled) {
     background: #4a211e;
+    color: #e5d2bd;
+}
+
+.bottom-box:focus-visible {
+    outline: 2px solid #a99b83;
+    outline-offset: 3px;
 }
 
 .bottom-box:disabled {
@@ -173,14 +245,27 @@ body {
     }
 
     .container {
-        height: 620px;
-        grid-template-rows: minmax(0, 1.2fr) minmax(0, 1fr) 112px;
+        min-height: 620px;
+        grid-template-rows: minmax(220px, auto) auto auto;
         gap: 9px;
     }
 
+    .top-area {
+        min-height: 220px;
+    }
+
     .middle-area {
-        padding: 14px;
+        min-height: 160px;
+        padding: 10px;
+    }
+
+    .dialogue-box {
         font-size: 15px;
+        gap: 10px;
+    }
+
+    .dialogue-name {
+        font-size: 10px;
     }
 
     .bottom-area {
